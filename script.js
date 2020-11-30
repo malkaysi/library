@@ -2,7 +2,7 @@ let myLibrary = [];
 
 let newBook;
 
-function Book(title, author, pages, status){
+function Book(title, author, pages, status){ // Uses input values from html
     this.title = document.getElementById('title').value;
     this.author = document.getElementById('author').value;
     this.pages = document.getElementById('pages').value;
@@ -12,7 +12,7 @@ function Book(title, author, pages, status){
     }
 }
 
-function createBook(){ // Creates a book usin
+function createBook(){ // Creates a book after clicking submit by passing input values to the constructor
     newBook = new Book();
     addBookToLibrary(newBook);
 }
