@@ -36,7 +36,13 @@ function addBookToLibrary(newBook) {
     tableRow.appendChild(bookAuthor);
     tableRow.appendChild(bookPages);
     tableRow.appendChild(bookStatus);
-    console.log(tableRow)
-    
+
     table.appendChild(tableRow);
+
+    console.log(myLibrary);
 }
+
+// To remove a book, we need to create a button element
+// We give this button element a class
+// If the button is clicked, we can run another function to remove the corresponding book
+// To do that, we figure out what index the book was in for the library array
