@@ -46,6 +46,9 @@ function addBookToLibrary(newBook) {
     table.appendChild(tableRow);
 
     statusButton.addEventListener('click', function (e) {
+        
+        // We actually have to remove it from the myLibrary object too
+
         tableRow.removeChild(bookTitle);
         tableRow.removeChild(bookAuthor);
         tableRow.removeChild(bookPages);
@@ -55,7 +58,7 @@ function addBookToLibrary(newBook) {
     });
 
     updateButton.addEventListener('click', () => {
-        if (bookStatus.innerText == 'Not Read'){
+        if (bookStatus.innerText == 'Not Read' || bookStatus.innerText == 'not read'){
             bookStatus.innerText = 'Read';
         } else if(bookStatus.innerText == 'Read') {
             bookStatus.innerText = 'Not Read';
@@ -64,8 +67,3 @@ function addBookToLibrary(newBook) {
 
     console.log(myLibrary);
 }
-
-// To remove a book, we need to create a button element
-// We give this button element a class
-// If the button is clicked, we can run another function to remove the corresponding book
-// To do that, we figure out what index the book was in for the library array
