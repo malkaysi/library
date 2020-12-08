@@ -27,18 +27,21 @@ function addBookToLibrary(newBook) {
     let bookPages = document.createElement('td');
     let bookStatus = document.createElement('td');
     let statusButton = document.createElement('button');
+    let updateButton = document.createElement('button');
 
     bookTitle.textContent = newBook.title;
     bookAuthor.textContent = newBook.author;
     bookPages.textContent = newBook.pages;
     bookStatus.textContent = newBook.status;
     statusButton.textContent = 'Remove Book';
+    updateButton.textContent = 'Update Status';
 
     tableRow.appendChild(bookTitle);
     tableRow.appendChild(bookAuthor);
     tableRow.appendChild(bookPages);
     tableRow.appendChild(bookStatus);
     tableRow.appendChild(statusButton);
+    tableRow.appendChild(updateButton);
 
     table.appendChild(tableRow);
 
@@ -48,6 +51,15 @@ function addBookToLibrary(newBook) {
         tableRow.removeChild(bookPages);
         tableRow.removeChild(bookStatus);
         tableRow.removeChild(statusButton);
+        tableRow.removeChild(updateButton);
+    });
+
+    updateButton.addEventListener('click', () => {
+        if (bookStatus.innerText == 'Not Read'){
+            bookStatus.innerText = 'Read';
+        } else if(bookStatus.innerText == 'Read') {
+            bookStatus.innerText = 'Not Read';
+        }
     });
 
     console.log(myLibrary);
