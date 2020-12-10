@@ -8,9 +8,6 @@ function Book(title, author, pages, status){ // Uses input values from html
     this.author = document.getElementById('author').value;
     this.pages = document.getElementById('pages').value;
     this.status = document.getElementById('status').value;
-    this.info = function(){
-        return title + ' by ' + author + ', ' + pages + ' pages, ' + status;
-    }
 }
 
 function createBook(){ // Creates a book after clicking submit by passing input values to the constructor
@@ -35,6 +32,7 @@ function addBookToLibrary(newBook) {
     bookStatus.textContent = newBook.status;
     statusButton.textContent = 'Remove Book';
     updateButton.textContent = 'Update Status';
+    bookIndex = newBook.index;
 
     tableRow.appendChild(bookTitle);
     tableRow.appendChild(bookAuthor);
@@ -46,15 +44,10 @@ function addBookToLibrary(newBook) {
     table.appendChild(tableRow);
 
     statusButton.addEventListener('click', function (e) {
-        
-        // We actually have to remove it from the myLibrary object too
 
-        tableRow.removeChild(bookTitle);
-        tableRow.removeChild(bookAuthor);
-        tableRow.removeChild(bookPages);
-        tableRow.removeChild(bookStatus);
-        tableRow.removeChild(statusButton);
-        tableRow.removeChild(updateButton);
+        // Think we need to update bookIndex with the latest
+        removeBook(tableRow, bookTitle, bookAuthor, bookPages, bookStatus, statusButton, updateButton, bookIndex);
+
     });
 
     updateButton.addEventListener('click', () => {
@@ -65,5 +58,18 @@ function addBookToLibrary(newBook) {
         }
     });
 
-    console.log(myLibrary);
+}
+
+function removeBook(tableRow, bookTitle, bookAuthor, bookPages, bookStatus, statusButton, updateButton, bookIndex){
+        
+
+        tableRow.removeChild(bookTitle);
+        tableRow.removeChild(bookAuthor);
+        tableRow.removeChild(bookPages);
+        tableRow.removeChild(bookStatus);
+        tableRow.removeChild(statusButton);
+        tableRow.removeChild(updateButton);
+
+        myLibrary.splice(myLibrary.indexOf(newBook), 1);
+
 }
