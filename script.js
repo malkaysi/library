@@ -1,18 +1,33 @@
 let myLibrary = [];
 
-let newBook;
+
 const table = document.querySelector('table');
+
+/* Old code
 
 function Book(title, author, pages, status){ // Uses input values from html
     this.title = document.getElementById('title').value;
     this.author = document.getElementById('author').value;
     this.pages = document.getElementById('pages').value;
     this.status = document.getElementById('status').value;
+} */
+
+class Book {
+    constructor(title, author, pages, status){
+        this.title = document.getElementById('title').value;
+        this.author = document.getElementById('author').value;
+        this.pages = document.getElementById('pages').value;
+        this.status = document.getElementById('status').value;
+    }
+    
 }
 
+
 function createBook(){ // Creates a book after clicking submit by passing input values to the constructor
-    newBook = new Book();
+    const newBook = new Book();
     addBookToLibrary(newBook);
+
+    return newBook;
 }
 
 function addBookToLibrary(newBook) {
@@ -60,7 +75,7 @@ function addBookToLibrary(newBook) {
 
 }
 
-function removeBook(tableRow, bookTitle, bookAuthor, bookPages, bookStatus, statusButton, updateButton, bookIndex){
+function removeBook(tableRow, bookTitle, bookAuthor, bookPages, bookStatus, statusButton, updateButton, bookIndex, newBook){
         
 
         tableRow.removeChild(bookTitle);
